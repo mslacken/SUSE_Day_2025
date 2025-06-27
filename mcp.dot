@@ -1,0 +1,34 @@
+digraph LLMMCPDataFlow {
+    rankdir=LR; // Layout from Left to Right
+    node [shape=box, style="filled,rounded", fontname="Inter"];
+    edge [fontname="Inter", color="#333333"];
+
+    // Nodes with different colors
+    "LLM Host" [label="LLM Host", fillcolor="#90EE90"]; // Light Green
+    "MCP Client" [label="MCP Client", shape=box, style="filled,rounded", fillcolor="#AFEEEE", fontsize=10]; // Pale Turquoise - nested inside LLM Host conceptually
+
+    "MCP Server" [label="MCP Server", fillcolor="#FFB6C1"]; // Light Pink
+
+    "Data Source" [label="Data Source\n(Files, databases...)", fillcolor="#ADD8E6"]; // Light Blue
+
+    // Grouping MCP Client inside LLM Host visually (conceptual, not structural in DOT)
+    // For a true nested box, it's more complex in pure DOT. This is a visual hint.
+    subgraph cluster_llm {
+        label=""; // No label for the cluster itself
+        style=invis; // Make the cluster invisible so it just positions things
+        "LLM Host";
+        "MCP Client";
+        "LLM Host" -> "MCP Client" [style=invis, dir=none, weight=10]; // Invisible link to keep them close
+    }
+
+    // Edges (Flow)
+    "LLM Host" -> "MCP Server" [label="Request via MCP"];
+    "MCP Server" -> "LLM Host" [label="Response via MCP", headport=s, tailport=s]; // Ensures arrows don't overlap too much
+
+    "MCP Server" -> "Data Source" [label="Fetch"];
+    "Data Source" -> "MCP Server" [label="Return Data", headport=s, tailport=s]; // Ensures arrows don't overlap too much
+
+    // Optional: Arrows directly between LLM Host and MCP Client to explicitly show relationship within LLM Host context
+    // "LLM Host" -> "MCP Client" [label="Initiate Request", dir=forward];
+    // "MCP Client" -> "LLM Host" [label="Receive Response", dir=forward];
+}
