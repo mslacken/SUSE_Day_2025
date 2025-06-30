@@ -40,4 +40,8 @@ Short introduction to kowalksi
 
 ![Screenshot](build/images/kowalksi-intro-19.png)
 
+![Screenshot](build/images/kowalksi-intro-20.png)
+
+![Screenshot](build/images/kowalksi-intro-21.png)
+
 ([PDF kowalski intro](build/kowalksi-intro.pdf))

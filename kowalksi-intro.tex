@@ -4,8 +4,8 @@
 \usepackage{listings}
 \usepackage{colortbl}
 \usepackage[scaled=.92]{helvet}
-\renewcommand*\sfdefault{cmss}
-\usepackage[sfmath]{kpfonts}
+% \renewcommand*\sfdefault{cmss}
+% \usepackage[sfmath]{kpfonts}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -95,31 +95,6 @@
 \end{frame}
 
 
-\begin{frame}{Model Context Protocol (MCP) - the other kid in town}
-    \begin{block}{open standard for AI-tool integration, introduced by Anthropic (Nov 2024):}
-    \begin{itemize}
-        \item replace custom connectors with a \textbf{universal interface} for LLMs.
-        \item enable seamless access to files, functions, and contextual prompts.
-    \end{itemize}
-    \end{block}
-
-    \begin{block}{Why MCP?}
-        \begin{itemize}
-            \item \textbf{Pre-MCP}: Vendor-specific APIs led to fragmentation.
-            \item \textbf{MCP}: Open standard adopted by OpenAI, Google DeepMind and OSS tools
-            \item Inspired by \textbf{Language Server Protocol (LSP)}, uses \textbf{JSON-RPC 2.0}.
-        \end{itemize}
-    \end{block}
-
-    \begin{columns}
-        \column{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{mcp-workflow} % e.g., MCP architecture diagram
-        \column{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{adoption-timeline} % e.g., OpenAI/DeepMind adoption graphic
-    \end{columns}
-\end{frame}
 
 \section{AI Tools}
 \begin{frame}{Vector Embeddings}
@@ -233,6 +208,46 @@
 
 \begin{frame}{How does Kowalski work}
 \includegraphics[width=\linewidth]{Flow.drawio}
+\end{frame}
+
+\begin{frame}{Model Context Protocol (MCP) - the other kid in town}
+    \begin{block}{What is MCP?}
+    \begin{itemize}
+        \item open standard for AI-tool integration by Anthropic (Nov 2024)
+        \item replace custom connectors with a \textbf{universal interface} for LLMs.
+        \item enable seamless access to files, functions, and contextual prompts.
+    \end{itemize}
+    \end{block}
+    \begin{block}{Why MCP?}
+        \begin{itemize}
+            \item \textbf{Pre-MCP}: Vendor-specific APIs led to fragmentation.
+            \item \textbf{MCP}: Open standard adopted by OpenAI, Google DeepMind and OSS tools
+            \item Inspired by \textbf{Language Server Protocol (LSP)}, uses \textbf{JSON-RPC 2.0}.
+        \end{itemize}
+    \end{block}
+    \includegraphics[width=\linewidth]{mcp2}
+\end{frame}
+
+\begin{frame}{MCP and Kowalski}
+\begin{block}{MCP advantanges}
+\begin{itemize}
+  \item industry standard, get's a lot of traction
+  \item specialized LLMs are created for this purpose
+\end{itemize}
+\end{block}
+\begin{block}{MCP disadvantages}
+\begin{itemize}
+  \item LLMs still rely on inherent knowledge
+  \item whole thinkg process takes longer as LLM needs to ask MCP server first
+\end{itemize}
+\begin{block}{Solutions}
+  \begin{itemize}
+    \item Kowalksi acts as a MCP server
+    \item Kowalksi uses MCP services
+  \end{itemize}
+\end{block}
+\end{block}
+
 \end{frame}
 
 \begin{frame}{Advantages of separate Ollama instance}

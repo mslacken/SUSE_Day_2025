@@ -21,15 +21,9 @@ digraph LLMMCPDataFlow {
         shape=plaintext
     ];
 
-    // Other nodes with fixed size for consistency.
-    // Note: "LLM Host" will be visually larger due to its nested content.
     "MCP Server" [label="MCP Server", fillcolor="#FFB6C1", fixedsize=true, width=2.5, height=1.5];
     "Data Source" [label="Data Source\n(Files, databases...)", fillcolor="#ADD8E6", fixedsize=true, width=3, height=1.5]; // Slightly wider to accommodate text
-
-    // Edges (Flow) with specific ports for clean, straight lines
-    // Request via MCP: From MCP Client port within LLM Host (east side) to MCP Server (west side)
     "LLM Host":mcp_client_port:e -> "MCP Server":w [label="Request via MCP"];
-
     "MCP Server":w -> "LLM Host":e [label="Response via MCP"];
     "Data Source":w -> "MCP Server":e [label="Fetch/Execute"];
     "MCP Server":e -> "Data Source":w [label="Return Data"];
