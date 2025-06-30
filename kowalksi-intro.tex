@@ -174,6 +174,23 @@
 \end{columns}
 \end{frame}
 
+\begin{frame}{Advantages of separate Ollama instance}
+\begin{block}{Pros}
+\begin{itemize}
+  \item GPU accelerated Ollama versions can be used
+  \item Ollama can run as micro service
+  \item Ollama can run on seperate server
+  \item Embedding and LLMs are interchangeable
+\end{itemize}
+\end{block}
+\begin{block}{Contras}
+\begin{itemize}
+  \item Requires separate Ollama installation
+\end{itemize}
+\end{block}
+\end{frame}
+
+
 \section{Kowalski Implementation}
 \begin{frame}{Why Go for Kowalski?}
 \begin{block}{Python's Challenges in Production AI}
@@ -209,7 +226,7 @@
 \begin{frame}{How does Kowalski work}
 \includegraphics[width=\linewidth]{Flow.drawio}
 \end{frame}
-
+\section{MCP and Kowalski}
 \begin{frame}{Model Context Protocol (MCP) - the other kid in town}
     \begin{block}{What is MCP?}
     \begin{itemize}
@@ -229,6 +246,8 @@
 \end{frame}
 
 \begin{frame}{MCP and Kowalski}
+\begin{columns}
+\column{.6\textwidth}
 \begin{block}{MCP advantanges}
 \begin{itemize}
   \item industry standard, get's a lot of traction
@@ -238,32 +257,19 @@
 \begin{block}{MCP disadvantages}
 \begin{itemize}
   \item LLMs still rely on inherent knowledge
-  \item whole thinkg process takes longer as LLM needs to ask MCP server first
+  \item whole thinking process takes longer as LLM needs to ask MCP server first
 \end{itemize}
+\end{block}
 \begin{block}{Solutions}
   \begin{itemize}
-    \item Kowalksi acts as a MCP server
-    \item Kowalksi uses MCP services
+    \item Kowalski acts as a MCP server
+    \item Kowalski uses MCP services
   \end{itemize}
 \end{block}
-\end{block}
+\column{.4\textwidth}
+    \includegraphics[width=\linewidth]{robot_conf}
+\end{columns}
 
-\end{frame}
-
-\begin{frame}{Advantages of separate Ollama instance}
-\begin{block}{Pros}
-\begin{itemize}
-  \item GPU accelerated Ollama versions can be used
-  \item Ollama can run as micro service
-  \item Ollama can run on seperate server
-  \item Embedding and LLMs are interchangeable
-\end{itemize}
-\end{block}
-\begin{block}{Contras}
-\begin{itemize}
-  \item Requires separate Ollama installation
-\end{itemize}
-\end{block}
 \end{frame}
 
 \begin{frame}{How does it look like?}
@@ -271,7 +277,7 @@
 \end{frame}
 
 \begin{frame}{Help wanted!}
-\href{https://github.com/mslacken/kowalski}{https://github.com/mslacken/kowalski}
+\href{https://github.com/kowalski-org/kowalski}{https://github.com/kowalski-org/kowalski}
 \begin{block}{EVERYONE}
 \begin{itemize}
   \item Requests for Kowalksi under \texttt{/evalutations/foo.yaml}
@@ -304,8 +310,8 @@ Also help needed!
 \end{columns}
 \end{block}
 \begin{block}{RPM package}
-  Get package with embeddings from \texttt{science:machinelearning}
-  \hfill
+  Get package with embeddings from \texttt{science:machinelearning}\\
+  \href{https://build.opensuse.org/project/show/science:machinelearning}{https://build.opensuse.org/project/show/science:machinelearning}
 \end{block}
 \end{frame}
 \begin{frame}{Packaging caveats}
