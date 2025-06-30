@@ -1,5 +1,5 @@
 # add to PROJECTS variable all the projects to compile, without the .tex suffix
-PROJECTS = kowalksi-intro
+PROJECTS = kowalski-intro
 
 BUILDDIR = build
 OUTPUT_IMAGESDIR = $(BUILDDIR)/images
